@@ -1,0 +1,128 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+
+  :root  {
+    --background: 10 0% 100%;
+    --foreground: 10 0% 10%;
+    --card: 10 0% 100%;
+    --card-foreground: 10 0% 15%;
+    --popover: 10 0% 100%;
+    --popover-foreground: 10 95% 10%;
+    --primary: 10 93% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 10 10% 90%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: -28 10% 95%;
+    --muted-foreground: 10 0% 40%;
+    --accent: -28 10% 90%;
+    --accent-foreground: 10 0% 15%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 10 0% 100%;
+    --border: 10 20% 82%;
+    --input: 10 20% 50%;
+    --ring: 10 93% 48%;
+    --radius: 1rem;
+  }
+  .dark  {
+    --background: 10 10% 10%;
+    --foreground: 10 0% 100%;
+    --card: 10 0% 10%;
+    --card-foreground: 10 0% 100%;
+    --popover: 10 10% 5%;
+    --popover-foreground: 10 0% 100%;
+    --primary: 10 93% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 10 10% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: -28 10% 25%;
+    --muted-foreground: 10 0% 65%;
+    --accent: -28 10% 25%;
+    --accent-foreground: 10 0% 95%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 10 0% 100%;
+    --border: 10 20% 50%;
+    --input: 10 20% 50%;
+    --ring: 10 93% 48%;
+    --radius: 1rem;
+
+  }
+
+}
+
+/* Utility Classes */
+@layer utilities {
+  body {
+    background-color: hsl(var(--background));
+  }
+
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+
+  textarea, .response-box {
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+    background-color: hsl(var(--card)) !important;
+  }
+
+  textarea:focus, .response-box:focus {
+    outline: 2px solid hsl(var(--ring)) !important;
+  }
+
+  button {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  button:hover {opacity: 0.9;}
+
+  .drawer-content {
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+    background-color: hsl(var(--card)) !important;
+  }
+}
+
+/* Animations */
+@layer utilities {
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes caret-blink {
+    0%, 70%, 100% {
+      opacity: 1;
+    }
+    20%, 50% {
+      opacity: 0;
+    }
+  }
+
+  /* Utility Classes */
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
+  }
+
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
+  }
+
+  .animate-caret-blink {
+    animation: caret-blink 1.25s ease-out infinite;
+  }
+}
